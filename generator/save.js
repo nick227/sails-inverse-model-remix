@@ -168,7 +168,7 @@ saveCloud = function(dir_folder_model, Models) {
         	var obj = {}
         	obj[model.model_name] = {
         		verb:"POST",
-        		url: "/api/v1/entrance/"+model.model_name,
+        		url: "/api/v1/"+model.model_name,
         		args:[]
         	}
 
