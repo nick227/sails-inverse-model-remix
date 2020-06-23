@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>New {{title}}</h1>
+
+  <div class="body">
+    <form class="" action="/api/v1/{{name}}/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+      {{#each elements}}
+        <div class="form-group">
+          <label for="">{{name}}</label>
+          <input type="{{type}}" name="{{name}}" value="<%= element.{{name}} %>" class="form-control" required="{{required}}">
+        </div>
+      {{/each}}
+      <button type="submit">Update {{title}}</button>
+    </form>
+    <br />
+    <a href="/{{name}}">Index</a>
+  </div>
+</div>

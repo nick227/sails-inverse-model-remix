@@ -1,0 +1,96 @@
+{
+  "_from": "sails-inverse-model@next",
+  "_id": "sails-inverse-model@2.0.7-1",
+  "_inBundle": false,
+  "_integrity": "sha512-YvJvXaHWl2JmkNfgfxIJRLLzBtjZcZ8bX/+v0g+xLE8LZvGcaE1FtEQIb0viqyAeD7tqPBQAjNrn/oiApTzMUg==",
+  "_location": "/sails-inverse-model",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "sails-inverse-model@next",
+    "name": "sails-inverse-model",
+    "escapedName": "sails-inverse-model",
+    "rawSpec": "next",
+    "saveSpec": null,
+    "fetchSpec": "next"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/sails-inverse-model/-/sails-inverse-model-2.0.7-1.tgz",
+  "_shasum": "4ad1f00f06f1d363f2a15b424abe7ed3547fcd9f",
+  "_spec": "sails-inverse-model@next",
+  "_where": "C:\\wamp64\\www\\sails",
+  "author": {
+    "name": "Julian David + Nick Rios",
+    "url": "https://github.com/juliandavidmr"
+  },
+  "bin": {
+    "sails-inverse-model": "cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/juliandavidmr/sails-inverse-model/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "ansi-styles": "^3.2.1",
+    "async": "^2.6.1",
+    "gencode": "^1.0.4",
+    "handlebars": "^4.0.12",
+    "meow": "^3.5.0",
+    "mkdir-promise": "^1.0.0",
+    "mondongo": "^1.0.0",
+    "mysqldesc": "^1.1.4",
+    "node-js-beautify": "^0.1.0",
+    "pg-json-schema-export": "^0.13.7",
+    "progress": "^2.0.1",
+    "underscore.string": "^3.3.5"
+  },
+  "deprecated": false,
+  "description": "Sails Inverse Model helps you build models, controllers and views JS Sails from any database. In addition, you can quickly and individually generate each model, view, controller or all three at the same time.",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "generator/",
+    "configs/",
+    "genviews/",
+    "scanners/"
+  ],
+  "homepage": "https://github.com/juliandavidmr/sails-inverse-model#readme",
+  "keywords": [
+    "cli-app",
+    "sailsjs",
+    "generator",
+    "model",
+    "controller",
+    "views",
+    "hbs",
+    "json",
+    "mysql",
+    "prompt",
+    "auto",
+    "models",
+    "generate",
+    "file",
+    "sql",
+    "api",
+    "waterline"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "sails-inverse-model",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliandavidmr/sails-inverse-model.git"
+  },
+  "scripts": {
+    "publish": "np --no-yarn --no-cleanup",
+    "test": ""
+  },
+  "version": "2.0.7-1"
+}
