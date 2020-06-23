@@ -11,6 +11,7 @@ const to = require('../configs/to');
  * @param  {[type]} model_basic [description]
  * @return {[string]}             [string]
  */
+exports.toCloud = function(model_basic){}
 exports.toModel = function (model_basic) {
   var out = [];
   out.push("/**");

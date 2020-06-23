@@ -61,7 +61,6 @@ if (g) {
         name: separate[0],
         type: convert.SailstoHtmlAtt(separate[1])
       };
-
       aux_item_view.push(JSON.stringify(content_view));
     });
   });
@@ -87,10 +86,14 @@ if (g) {
     case 'routes':
       saveRoutes(concat(process.cwd(), 'Routes'), Model);
       break;
+    case 'cloud':
+      saveCloud(concat(process.cwd(), 'Cloud'), Model);
+      break;
     case 'links':
       saveLinks(concat(process.cwd(), 'Links'), Model);
       break;
     case 'all':
+      saveCloud(concat(process.cwd(), 'Cloud'), Model);
       saveLinks(concat(process.cwd(), 'Links'), Model);
       saveRoutes(concat(process.cwd(), 'Routes'), Model);
       saveModels(concat(process.cwd(), 'Models'), Model);
@@ -113,6 +116,7 @@ if (g) {
     folder_controllers,   // Option path folder controllers
     folder_views,         // Option path folder views
     folder_routes,         // Option path folder routes
+    folder_cloud,         // Option path folder routes
     schema,               // Option schema database => postgres
     type,                 // Option type gestor database: mysql, postgres, mongodb
     filesql;              // Option path file .sql
@@ -179,7 +183,12 @@ if (g) {
   //Folder links
   folder_links = cli.flags.l || cli.flags.links;
   if (folder_links === true || folder_links == "true") {
-    folder_links = concat(process.cwd(), "links"); // Method concat: see configs/route.js
+    folder_links = concat(process.cwd(), "links"); // Method concat: see configs/links.js
+  }
+  //Folder cloud
+  folder_cloud = cli.flags.x;
+  if (folder_cloud === true || folder_cloud == "true") {
+    folder_cloud = concat(process.cwd(), "cloud"); // Method concat: see configs/cloud.js
   }
 
   //Folder routes
@@ -208,7 +217,7 @@ if (g) {
   if (filesql) {
     exitsfile(filesql, function (exits) {
       if (exits) {
-        generate_my_transpile.generate(filesql, folder_models, folder_controllers, folder_views, folder_routes, folder_links);
+        generate_my_transpile.generate(filesql, folder_models, folder_controllers, folder_views, folder_routes, folder_links, folder_cloud);
       } else {
         console.log(color("\nERROR: No exits '" + filesql + "'. \nEnter 'sails-inverse-model --help'", "red"));
       }
@@ -219,14 +228,14 @@ if (g) {
 
       if (type.indexOf("pg") != -1 || type.indexOf("postgres") != -1) { //pg, postgres
         config.port = 5432;
-        generate_pg.generate(config, folder_models, folder_controllers, folder_views, folder_routes, folder_links);
+        generate_pg.generate(config, folder_models, folder_controllers, folder_views, folder_routes, folder_links, folder_cloud);
       } else if (type.indexOf("my") != -1 || type.indexOf("mysql") != -1) { //my, mysql
         delete config.schema;
-        generate_my.generate(config, folder_models, folder_controllers, folder_views, folder_routes, folder_links);
+        generate_my.generate(config, folder_models, folder_controllers, folder_views, folder_routes, folder_links, folder_cloud);
       } else if (type.indexOf("mg") != -1 || type.indexOf("mongo") != -1) {
         //mg, mongo
         generate_mg
-          .generate(config.host, 27017, config.database, folder_views, folder_models, folder_controllers, folder_routes, folder_links)
+          .generate(config.host, 27017, config.database, folder_views, folder_models, folder_controllers, folder_routes, folder_links, folder_cloud)
           .then((value) => {
             console.log(color("[OK]", "green") + " Mongo");
           }, (err) => {

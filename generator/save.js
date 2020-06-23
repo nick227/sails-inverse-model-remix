@@ -142,3 +142,71 @@ saveLinks = function(dir_folder_model, Models) {
         console.error(ex);
     });
 };
+saveCloud = function(dir_folder_model, Models) {
+	/*
+  "signup": {
+    "verb": "POST",
+    "url": "/api/v1/entrance/signup",
+    "args": [
+      "emailAddress",
+      "password",
+      "fullName"
+    ]
+  },
+  */
+    var name_m = "cloud.js"
+
+ 	var result = []
+    var bar = new ProgressBar(':bar', {
+        total: Models.length
+    });
+
+    //console.log(Models);
+    mkdir(dir_folder_model).then(() => {
+    	var content = []
+        Models.map((model) => {
+        	var obj = {}
+        	obj[model.model_name] = {
+        		verb:"POST",
+        		url: "/api/v1/entrance/"+model.model_name,
+        		args:[]
+        	}
+
+        	for(var i = 0, length1 = model.view_content.length; i < length1; i++){
+        		var name = model.view_content[i].name
+        		var o = JSON.parse(model.view_content[i])
+        		obj[model.model_name].args.push(o.name)
+        	}
+        	content.push(b.beautify_js(JSON.stringify(obj)))
+        });
+
+        gencode.save(content, dir_folder_model, name_m).then((value) => {
+            bar.tick();
+            if (bar.complete) {
+                console.log('Cloud ' + color("[OK]", "green"));
+            }
+        }, (err) => {
+            console.error(color(err, "red"));
+        });
+
+    }, (ex) => {
+        console.error(ex);
+    });
+
+
+
+};
+
+const str2obj = str => {
+  return str
+    .split(',')
+    .map(keyVal => {
+      return keyVal
+        .split(':')
+        .map(_ => _.trim())
+    })
+    .reduce((accumulator, currentValue) => {
+      accumulator[currentValue[0]] = currentValue[1]
+      return accumulator
+    }, {})
+}

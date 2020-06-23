@@ -16,7 +16,7 @@ require('../../configs/color');
 
 const FK_IDENTIFIER = "id";
 
-exports.generate = function(config, folder_models, folder_controllers, folder_views, folder_routes, folder_links) {
+exports.generate = function(config, folder_models, folder_controllers, folder_views, folder_routes, folder_links, folder_cloud) {
   // Describe connected database
   mysqldesc(config, function(err, data) {
     if (err) {
@@ -78,6 +78,9 @@ exports.generate = function(config, folder_models, folder_controllers, folder_vi
         }
         if (folder_controllers !== "" && folder_controllers) {
           saveControllers(folder_controllers, Models);
+        }
+        if (folder_cloud !== "" && folder_cloud) {
+          saveCloud(folder_cloud, Models);
         }
       });
     }
