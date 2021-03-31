@@ -1,3 +1,3 @@
 Please see https://travis-ci.org/juliandavidmr/sails-inverse-model for full documentation. 
 
-This is a fork in progress
+Add -r (routes) -c (cloud) -l (links) -a (all) flags to cli.
